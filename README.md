@@ -1,5 +1,6 @@
-# pinpon
-sound pinpon. only
+# pinpon  
+sound pinpon. only  
+[Let's play here](https://yy-tromb.github.io/pinpon/)
 
 # image
 [illustAC search](https://www.ac-illust.com/main/search_result.php?word=%E6%AD%A3%E8%A7%A3%E7%99%BA%E8%A1%A8)  
