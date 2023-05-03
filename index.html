@@ -35,6 +35,7 @@
          img {
             height: 100%;
             aspect-ratio: 9 / 16;
+            display: none;
          }
 
          button {
@@ -53,32 +54,32 @@
    </head>
    <body>
       <div id="up">
-         <img src="./up.jpeg" />
+         <img src="./up.jpeg" id="up_image"/>
       </div>
       <button id="button">Push!</button>
 
       <script>
-         document.onload = () => {
             const url = "./pinpon.wav";
             const audio = new Audio();
             audio.src = url;
             audio.loop = false;
             audio.muted = false;
             audio.preload = "auto";
+            const up_image=document.getElementById("up_image");
             const button = document.getElementById("button");
             button.addEventListener(
                "click",
                (e) => {
                   audio.currentTime = 0;
                   audio.play();
+                  up_image.style.display="block";
+                  setTimeout(handsDown,2000);
                },
                { passing: true }
             );
-
-            window.addEventListener("resize", fitButton, { passive: true });
-
             fitButton();
-         };
+
+         window.addEventListener("resize", fitButton, { passive: true });
 
          function fitButton() {
             if (button.clientWidth / 5 < 64) {
@@ -88,6 +89,10 @@
             } else {
                button.style.fontSize = "7.5rem";
             }
+         }
+
+         function handsDown(){
+            up_image.style.display="none";
          }
       </script>
    </body>
