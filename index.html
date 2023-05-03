@@ -58,32 +58,37 @@
       <button id="button">Push!</button>
 
       <script>
-         const url = "./pinpon.wav";
-         const audio = new Audio();
-         audio.src = url;
-         audio.loop = false;
-         audio.muted = false;
-         const button = document.getElementById("button");
-         button.addEventListener(
-            "click",
-            (e) => {
-               audio.currentTime = 0;
-               audio.play();
-            },
-            { passing: true }
-         );
+         document.onload = () => {
+            const url = "./pinpon.wav";
+            const audio = new Audio();
+            audio.src = url;
+            audio.loop = false;
+            audio.muted = false;
+            audio.preload = "auto";
+            const button = document.getElementById("button");
+            button.addEventListener(
+               "click",
+               (e) => {
+                  audio.currentTime = 0;
+                  audio.play();
+               },
+               { passing: true }
+            );
 
-         window.addEventListener(
-            "resize",
-            (e) => {
-               if (button.clientWidth / 5 < 64) {
-                  button.style.fontSize=`${7.5*((button.clientWidth/5)/64)}rem`;
-               }else{
-                  button.style.fontSize="7.5rem";
-               }
-            },
-            { passive: true }
-         );
+            window.addEventListener("resize", fitButton, { passive: true });
+
+            fitButton();
+         };
+
+         function fitButton() {
+            if (button.clientWidth / 5 < 64) {
+               button.style.fontSize = `${
+                  7.5 * (button.clientWidth / 5 / 64)
+               }rem`;
+            } else {
+               button.style.fontSize = "7.5rem";
+            }
+         }
       </script>
    </body>
 </html>
