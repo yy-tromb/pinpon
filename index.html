@@ -34,7 +34,7 @@
          img{
              max-width:100%;
              max-height:100%;
-             aspect-ratio: 9 / 16; //？
+             aspect-ratio: 9 / 16; /*？*/
          }
          
          button{
@@ -53,8 +53,19 @@
             <img src="./up.png">
         </div>
         <button id="button"> </button>
+        
         <script>
             //hoge world
+            const url="./pinpon.mp3";
+            const audio=new Audio();
+            audio.src=url;
+            audio.loop=false;
+            audio.muted=false;
+            const button=document.getElementById("button");
+            button.addEventListener("click",e=>{
+                audio.currentTime=0;
+                audio.play();
+            },{passing:true});
         </script>
     </body>
 </html>
